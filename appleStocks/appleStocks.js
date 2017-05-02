@@ -18,3 +18,31 @@ getMaxProfit(stockPricesYesterday); // returns 6 (buying for $5 and selling for 
 No "shorting"—you must buy before you sell. You may not buy and sell in the same time step (at least 1 minute must pass).
 */
 
+var stockPricesYesterday = [10, 7, 5, 8, 11, 9];
+
+var getMaxProfit = function(array) {
+  // declare min max slicedArray index variables
+  var min = array[0];
+  var max = 0;
+  var slicedArray;
+  var minIndex;
+  // find min first
+  array.forEach((number, index) => {
+    if (number < min && number >= 0) {
+      min = number;
+      minIndex = index;
+    }
+  })
+  // slice for numbers after min 
+  // find max within sliced array
+  array.slice(minIndex).forEach((number) => {
+    if (number > max) {
+      max = number;
+    }
+  })
+  // get the difference 
+
+  return max - min;
+}
+
+console.log(getMaxProfit(stockPricesYesterday));

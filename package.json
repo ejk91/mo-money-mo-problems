@@ -1,0 +1,23 @@
+{
+  "name": "mo-money-mo-problems",
+  "version": "1.0.0",
+  "description": "toy problems",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^19.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejk91/mo-money-mo-problems.git"
+  },
+  "author": "Enoch Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejk91/mo-money-mo-problems/issues"
+  },
+  "homepage": "https://github.com/ejk91/mo-money-mo-problems#readme"
+}
