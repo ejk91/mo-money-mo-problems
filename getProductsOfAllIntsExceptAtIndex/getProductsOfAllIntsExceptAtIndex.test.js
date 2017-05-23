@@ -34,3 +34,7 @@ test('testing isEqual function', () => {
   expect(isEqual(array1, array3)).toBeFalsy()
 })
 
+test('gets all products of all integers except at index', () => {
+  expect(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]).toEqual([84, 12, 28, 21]))
+})
+
