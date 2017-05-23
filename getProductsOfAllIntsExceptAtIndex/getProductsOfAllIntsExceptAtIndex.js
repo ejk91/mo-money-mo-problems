@@ -12,3 +12,8 @@ This is done by calculating:
 Do not use division.
 */
 
+let getProductsOfAllIntsExceptAtIndex = (array) => {
+
+}
+
+module.exports = getProductsOfAllIntsExceptAtIndex;
