@@ -13,7 +13,23 @@ Do not use division.
 */
 
 let getProductsOfAllIntsExceptAtIndex = (array) => {
+  let results = []
+  for(let i = 0; i < array.length; i++) {
+    results.push(findProductExcept(i, array));
+  }
+  return results;
+}
 
+let findProductExcept = (index, array) => {
+  let product = 1
+  for (let k = 0; k < array.length; k++) {
+    if ( index !== k) {
+      product *= array[k]
+    }
+  }
+  return product
 }
 
 module.exports = getProductsOfAllIntsExceptAtIndex;
+
+console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]))
