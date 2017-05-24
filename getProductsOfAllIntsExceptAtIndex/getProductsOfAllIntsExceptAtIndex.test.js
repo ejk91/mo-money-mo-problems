@@ -1,4 +1,5 @@
 const getProductsOfAllIntsExceptAtIndex = require('./getProductsOfAllIntsExceptAtIndex.js');
+console.log(getProductsOfAllIntsExceptAtIndex)
 
 
 // Jest provides '.toEqual' function that can compare two arrays
@@ -21,9 +22,6 @@ let isEqual = (array1, array2) => {
   return isEqual;
 }
 
-let array1 = [1, 7, 3, 4];
-let array2 = [1, 7, 3, 5];
-console.log(isEqual(array1, array2))
 
 test('testing isEqual function', () => {
   let array1 = [1, 7, 3, 4];
@@ -35,6 +33,8 @@ test('testing isEqual function', () => {
 })
 
 test('gets all products of all integers except at index', () => {
-  expect(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]).toEqual([84, 12, 28, 21]))
+  expect(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4])).toEqual([84, 12, 28, 21])
+  expect(getProductsOfAllIntsExceptAtIndex([1, 2, 6, 5, 9])).toEqual([540, 270, 90, 108, 60])
 })
+
 
