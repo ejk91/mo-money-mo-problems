@@ -7,18 +7,15 @@ console.log(getProductsOfAllIntsExceptAtIndex)
 
 let isEqual = (array1, array2) => {
   let isEqual = true
-
   if (array1.length !== array2.length) {
     return false;
   }
   // array1.length !== array2.length ? false : true
-
   array1.forEach((i, index) => {
     if ( i !== array2[index]){
       isEqual = false;
     }
   })
-
   return isEqual;
 }
 
