@@ -1,0 +1,1 @@
+const largestProductOfThree = require('./largestProductOfThree.test.js')
