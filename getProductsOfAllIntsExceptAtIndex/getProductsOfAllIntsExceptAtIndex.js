@@ -45,7 +45,7 @@ Do not use division.
   //   }
   // }
 
-let getProductsOfAllIntsExceptAtIndex = (array) => {
+var getProductsOfAllIntsExceptAtIndex = (array) => {
   let before = [];
   let after = [];
 
@@ -73,6 +73,6 @@ let getProductsOfAllIntsExceptAtIndex = (array) => {
 
 module.exports = getProductsOfAllIntsExceptAtIndex;
 
-console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]))
+console.log(getProductsOfAllIntsExceptAtIndex([1, 2, 3, 4, 5, 6]))
 
 

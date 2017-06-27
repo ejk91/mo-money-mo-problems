@@ -61,7 +61,7 @@ let largestProductOfThree = (array) => {
     highestProductOf3 = Math.max(
       highestProductOf3, 
       highestProductOf2 * current,
-      lowestProductOf2 * current,
+      lowestProductOf2 * current
       )
 
     lowestProductOf2 = Math.min(
