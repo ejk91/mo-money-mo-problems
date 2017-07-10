@@ -2,7 +2,7 @@
 Write a function getProductsOfAllIntsExceptAtIndex() that takes an array of integers 
 and returns an array of the products.
 
-For Example:
+For Example: 
 
 [1, 7, 3, 4] => [84, 12, 28, 21]
 
@@ -56,6 +56,9 @@ var getProductsOfAllIntsExceptAtIndex = (array) => {
       before.push(array[j-1] * before[j-1]);
     }
   }
+
+  console.log('before', before);
+
   let afterProd = 1;
   for (let k = array.length - 1; k >= 0  ; k--) {
     after[k] = afterProd;
@@ -65,7 +68,6 @@ var getProductsOfAllIntsExceptAtIndex = (array) => {
     afterProd *= array[k]
   }
 
-  console.log('before', before);
   console.log('after', after);
 
   return before;
@@ -74,5 +76,7 @@ var getProductsOfAllIntsExceptAtIndex = (array) => {
 module.exports = getProductsOfAllIntsExceptAtIndex;
 
 console.log(getProductsOfAllIntsExceptAtIndex([1, 2, 3, 4, 5, 6]))
+
+console.log(getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]))
 
 
