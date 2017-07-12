@@ -44,8 +44,10 @@ upper bound.
 
 var mergeMeetings = function(array){
   let meetings = array.sort((a, b) => {
-   return a.startingTime - b.startingTime;
+   return a.startTime - b.startTime;
   });
+
+  console.log(meetings)
 
 
   let results = [];
@@ -72,34 +74,50 @@ var mergeMeetings = function(array){
   //   } 
   // }
 
+  // meetings.forEach((meeting, i) => {
+  //   let currentMeeting = meeting;
+  //   let lastMeeting = results[results.length - 1];
+  //   console.log('i: ', i, currentMeeting, lastMeeting)
+  //   if (currentMeeting.startTime > lastMeeting.endTime) {
+  //     console.log(1);
+  //     results.push(lastMeeting);
+  //     results.push(currentMeeting);
+  //     return;
+  //   } else if (currentMeeting.startTime < lastMeeting.endTime && currentMeeting.endTime > lastMeeting.endTime) {
+  //     console.log(2);
+  //     lastMeeting.endTime = currentMeeting.endTime;
+  //     console.log(lastMeeting)
+  //     results.push(lastMeeting);
+  //     return;
+  //   } else if (currentMeeting.startTime <= lastMeeting.startTime) {
+  //     console.log(3);
+  //     lastMeeting.startTime = currentMeeting.startTime;
+  //     results.push(lastMeeting);
+  //     return;
+  //   } else if (currentMeeting.startTime === lastMeeting.endTime && currentMeeting.endTime > lastMeeting.endTime) {
+  //     // extend the meeting slot
+  //     lastMeeting.endTime = currentMeeting.endTime;
+  //     results.push(lastMeeting)
+  //   } else {
+  //     // put meeting back in
+  //     results.push(lastMeeting);
+  //     console.log(results)
+  //   }
+  // })
+
+
   meetings.forEach((meeting, i) => {
     let currentMeeting = meeting;
-    let lastMeeting = results.pop();
-    console.log('i: ', i, currentMeeting, lastMeeting)
-    if (currentMeeting.startTime > lastMeeting.endTime) {
-      console.log(1);
-      results.push(lastMeeting);
-      results.push(currentMeeting);
-      return;
-    } else if (currentMeeting.startTime < lastMeeting.endTime && currentMeeting.endTime > lastMeeting.endTime) {
-      console.log(2);
-      lastMeeting.endTime = currentMeeting.endTime;
-      console.log(lastMeeting)
-      results.push(lastMeeting);
-      return;
-    } else if (currentMeeting.startTime <= lastMeeting.startTime) {
-      console.log(3);
-      lastMeeting.startTime = currentMeeting.startTime;
-      results.push(lastMeeting);
-      return;
-    } else if (currentMeeting.startTime === lastMeeting.endTime && currentMeeting.endTime > lastMeeting.endTime) {
-      // extend the meeting slot
-      lastMeeting.endTime = currentMeeting.endTime;
-      results.push(lastMeeting)
+    let lastMeeting = results[results.length - 1];
+
+    // current meetings start time is less than the last meeting.end time
+    // then we know that the current meeting start before the last merged meeting ends
+    if (currentMeeting.startTime <= lastMeeting.endTime) {
+      lastMeeting.endTime = Math.max(lastMeeting.endTime, currentMeeting.endTime);
     } else {
-      // put meeting back in
-      results.push(lastMeeting);
-      console.log(results)
+      // if the current meeting start time is greater than the last meeting end time
+      // we know that there is a gap so we just add the current meeting to the results array
+      results.push(currentMeeting);
     }
   })
 
