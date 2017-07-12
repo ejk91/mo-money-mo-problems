@@ -40,9 +40,17 @@ any case, the spirit of the challenge is to merge meetings where startTime and e
 upper bound.
 */
 
-var mergeMeetings = function(meetings){
+// This implementation is assuming the meetings array is sorted like in the original example
+
+var mergeMeetings = function(array){
+  let meetings = array.sort((a, b) => {
+   return a.startingTime - b.startingTime;
+  });
+
+
   let results = [];
-  results.push(meetings[0])
+  results.push(meetings[0]);
+
   // loop through meetings times
   // for (let i = 1; i < meetings.length; i++) {
   //   console.log('i: ', i, results);
@@ -68,7 +76,6 @@ var mergeMeetings = function(meetings){
     let currentMeeting = meeting;
     let lastMeeting = results.pop();
     console.log('i: ', i, currentMeeting, lastMeeting)
-
     if (currentMeeting.startTime > lastMeeting.endTime) {
       console.log(1);
       results.push(lastMeeting);
@@ -80,11 +87,15 @@ var mergeMeetings = function(meetings){
       console.log(lastMeeting)
       results.push(lastMeeting);
       return;
-    } else if (currentMeeting.startTime < lastMeeting.startTime) {
+    } else if (currentMeeting.startTime <= lastMeeting.startTime) {
       console.log(3);
       lastMeeting.startTime = currentMeeting.startTime;
       results.push(lastMeeting);
       return;
+    } else if (currentMeeting.startTime === lastMeeting.endTime && currentMeeting.endTime > lastMeeting.endTime) {
+      // extend the meeting slot
+      lastMeeting.endTime = currentMeeting.endTime;
+      results.push(lastMeeting)
     } else {
       // put meeting back in
       results.push(lastMeeting);
@@ -99,15 +110,35 @@ var mergeMeetings = function(meetings){
 }
 
 
-console.log('answer', mergeMeetings(
-  [
-  {startTime: 0, endTime: 1},
-  {startTime: 3, endTime: 5},
-  {startTime: 4, endTime: 8},
-  {startTime: 10, endTime: 12},
-  {startTime: 9, endTime: 10},
-  ]
-));
+// console.log('answer', mergeMeetings(
+//   [
+//   {startTime: 0, endTime: 1},
+//   {startTime: 3, endTime: 5},
+//   {startTime: 4, endTime: 8},
+//   {startTime: 10, endTime: 12},
+//   {startTime: 9, endTime: 10},
+//   ]
+// ));
+
+
+// console.log('answer', mergeMeetings(
+//   [{startTime: 1, endTime: 2}, {startTime: 2, endTime: 3}]
+// ));
+
+
+// console.log('answer', mergeMeetings(
+//     [{startTime: 1, endTime: 5}, {startTime: 2, endTime: 3}]
+// ));
+
+
+  console.log('answer', mergeMeetings(
+      [
+    {startTime: 2, endTime: 6},
+    {startTime: 3, endTime: 5},
+    {startTime: 1, endTime: 10},
+    {startTime: 7, endTime: 9}
+]
+  ));
 
 
 
